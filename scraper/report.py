@@ -6,9 +6,9 @@ from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
-HEADER_FILL = PatternFill("solid", fgColor="1F5C63")
+HEADER_FILL = PatternFill("solid", fgColor="305496")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
-DEAL_FILL = PatternFill("solid", fgColor="E3F1EE")
+DEAL_FILL = PatternFill("solid", fgColor="C6EFCE")
 
 
 def summarize(books):
@@ -52,7 +52,7 @@ def write_report(books, path, deal_threshold=20.0):
 
     if last > 1:
         table = Table(displayName="Books", ref=f"A1:E{last}")
-        table.tableStyleInfo = TableStyleInfo(name="TableStyleLight9", showRowStripes=True)
+        table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True)
         ws.add_table(table)
         ws.conditional_formatting.add(
             f"B2:B{last}", CellIsRule(operator="lessThan", formula=[str(deal_threshold)], fill=DEAL_FILL)
